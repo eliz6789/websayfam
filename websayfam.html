@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* Başlıklar */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff; /* Altın Sarısı */
+            font-weight: bold;
+        }
+
+        /* Paragraflar */
+        p {
+            font-family: 'Lora', serif;
+            color: #333333; /* Koyu Gri */
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Linkler */
+        a {
+            color: #3a8fd1; /* Parlak Mavi */
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #c2c2c2; /* Altın Sarısı */
+        }
+
+        /* Genel yazı stili */
+        body {
+            background-color: #1a2a47; /* Koyu Lacivert Arka Plan */
+            color: #f5f5f5; /* Açık Renkli Yazılar */
+            font-family: 'Roboto Slab', serif;
+        }
+
+        /* Alt metinler */
+        footer, .small-text {
+            font-size: 14px;
+            color: #f5f5f5;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Jewelry Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+
+    <canvas id="starCanvas"></canvas> <!-- Yıldızlar bu canvas üzerinde olacak -->
+
+
+
+    <span class="close-btn">&times;</span>
+<!-- Sepet İkonu -->
+<div id="cartIcon" class="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cartCount">0</span>
+  </div>
+  
+  <!-- Sepet Modal -->
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+      <span class="close-btn">&times;</span>
+      <h2>Sepetim</h2>
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="checkout-container">
+        <div class="totals">
+          
+          
+
+          <button onclick="completePayment()" id="payButton" class="pay-now-btn">ÖDEME YAP</button>
+        </div>
+    </div>
+    </div>
+  </div>
+  
+ 
+
+    
+  <!-- Gazete İkonu -->
+<div id="gazeteIcon" class="gazete-icon">
+  📰
+</div>
+
+<!-- Gazete Modal -->
+<div id="gazeteModal" class="gazete-modal">
+  <div class="gazete-content">
+    <div class="gazete-header">
+      <span id="closeGazete" class="close-btn">&times;</span>
+      <h2>Özel Koleksiyon</h2>
+    </div>
+
+    <!-- Gazete Sayfaları -->
+    <div id="gazetePages" class="gazete-pages">
+      <!-- Sayfa 1 -->
+      <div class="gazete-page">
+        <div class="gazete-page-content">
+          <h3>Yeni Sezon Kolyeler</h3>
+          <div class="gazete-row">
+            <div class="gazete-column">
+              <img src="gazate/g1.jpg" alt="Elmas Kolye">
+              <p>tanrı öpücüğü-$500000000</p>
+            </div>
+            <div class="gazete-column">
+              <img src="gazate/g2.jpg" alt="Altın Kolye">
+              <p>ilahi fısıltı-$50000000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sayfa 2 -->
+      <div class="gazete-page">
+        <div class="gazete-page-content">
+          <h3>Özel Bileklikler</h3>
+          <div class="gazete-row">
+            <div class="gazete-column">
+              <img src="gazate/g3.jpg" alt="Taşlı Bileklik">
+              <p>gizemli gölgeler-$400000000</p>
+            </div>
+            <div class="gazete-column">
+              <img src="gazate/g4.jpg" alt="Deri Bileklik">
+              <p>denizin çağrısı -$900000000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Sayfa Geçiş Butonları -->
+    <button id="prevPage" class="page-nav-btn">❮</button>
+    <button id="nextPage" class="page-nav-btn">❯</button>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+   
+
+
+   
+
+  
+
+      
+
+  <div class="feather-container">
+    <div class="feather"></div>
+    <div class="feather"></div>
+    <div class="feather"></div>
+    <div class="feather"></div>
+    <div class="feather"></div>
+  </div>
+  
+
+
+
+
+
+
+
+
+   
+    
+
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    
+
+    <section class="hero-section">
+        <div class="hero-image left">
+          <img src="yıldızlar/sirius.jpg" alt="Sirius Collection">
+        </div>
+      
+        <div class="hero-text">
+          <h1>Sirius & Astraeus</h1>
+          <p>
+            Göklerin en parlak yıldızıydı Sirius. Işığıyla karanlığı deler, gecenin içinde yankılanan bir şiir gibi parlar...  
+            Ve onu izleyen biri vardı: Astraeus.  
+            Bir başka yıldız, uzak ama tutkulu. Aşkı, ışığın arkasına saklı.  
+            Yasaktı bu bağ. Bir yıldızın diğerine düşkünlüğü, göklerin kuralına aykırıydı.  
+            Ama her gece, her parıltıda bir şiir düştü göğe.  
+            <br><br>
+            <em>"Beni göremezsin,  
+            Ama içimde seni bulurum."</em>
+            <br><br>
+            Sirius & Astraeus Koleksiyonu, bu yasak aşkın izlerini taşıyor.  
+            Sadece seçkin kalpler için tasarlandı.
+          </p>
+          <div class="mini-image">
+    
+          </div>
+          
+          <div class="mini-gallery">
+            <img src="mini/1.jpg" alt="Ayıran eller">
+            <img src="mini/2.jpg" alt="Yıldız patlaması">
+            <img src="mini/3.jpg" alt="Elmas gözyaşı">
+            <img src="mini/4.jpg" alt="Karanlık taç">
+            <img src="mini/5.jpg" alt="Yakın ama ayrı yıldızlar">
+          </div>
+          
+        </div>
+      
+        <div class="hero-image right">
+          <img src="yıldızlar/astraeus.jpg" alt="Astraeus Collection">
+        </div>
+      </section>
+
+      <div class="poster">
+        <button class="close-btn" onclick="closePoster()">✕</button>
+        <div class="poster-content">
+            <h1 class="poster-title">Yeni Koleksiyon – Azreal and Astria's war</h1>
+    
+            <div class="photo-container">
+                <div class="photo photo1"Yeni Koleksiyon – Azreal and Astria's war>
+                    <img src="katalog/a.jpg" alt="Ürün 1">
+                    <div class="photo-info">dark angel</div>
+                </div>
+                <div class="photo photo2">
+                    <img src="katalog/b.jpg" alt="Ürün 2">
+                    <div class="photo-info">İlahi siluet</div>
+                </div>
+                <div class="photo photo3">
+                    <img src="katalog/c.jpg" alt="Ürün 3">
+                    <div class="photo-info">saf ipek işlemeli pantalon</div>
+                </div>
+                <div class="photo photo4">
+                    <img src="katalog/d.jpg" alt="Ürün 4">
+                    <div class="photo-info">Ürün 4 Açıklaması</div>
+                </div>
+                <div class="photo photo5">
+                    <img src="katalog/e.jpg" alt="Ürün 5">
+                    <div class="photo-info">Gece gözü maske</div>
+                </div>
+            </div>
+        </div>
+    </div>
+                
+          
+      
+          <span class="close-btn" onclick="closePoster()">×</span>
+        </div>
+      </div>
+      
+
+
+
+    <header>
+        <h1>Celestium Throne </h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Ürün Ara..." onkeyup="searchProduct()">
+        </div>
+        <div class="cart">
+            <button onclick="viewCart()">Alışveriş Sepeti</button>
+            <span id="cartCount">0</span> ürün
+        </div>
+    </header>
+    <section id="home">
+        <h2>Discover Timeless Elegance</h2>
+        <header>
+            <h1>Celestium Throne</h1>
+            
+            <h2>Lüks Mücevherler ve Zanaat</h2>
+        </header>
+    
+        <section>
+            <h3>Hakkımızda</h3>
+            <p>Celestium Throne, zarafeti ve prestiji birleştirerek, şıklığıyla göz kamaştıran koleksiyonlar sunan bir markadır. Elmaslar, saf taşlar ve eşsiz zanaat işçiliğiyle, her ürün özenle tasarlanarak siz değerli müşterilerimize sunulmaktadır. Her parça, yalnızca yüksek kaliteyi değil, aynı zamanda eşsiz bir sanatı da taşır.</p>
+            
+            <p>Güçlü bir geçmişe sahip olan Celestium Throne, tarih boyunca sadece asilzadelerin ve yüksek sınıfın tercih ettiği zarif mücevherleriyle tanınır. Biz, her bir mücevheri sadece bir aksesuar olarak değil, aynı zamanda bir sanat eseri olarak tasarlıyoruz. Koleksiyonlarımız, göz alıcı güzellikleriyle bulunduğunuz her ortamda fark yaratmanızı sağlarken, yaşamınıza anlam katacak zarafeti ve şıklığı sunuyor.</p>
+    
+            <p>Şu anki koleksiyonumuz, gökyüzüne ve yıldızlara olan tutkumuzu yansıtarak, kendine özgü tasarımlarıyla sizlere hitap ediyor. Her parça, bir yıldızın ışığından ilham alınarak tasarlandı ve her biri, özel anlarınızda sizleri parlatacak şekilde tasarlandı. Bu koleksiyon, sadece bir mücevher değil, hayatınıza dokunan bir parça olarak varlığını sürdürecektir.</p>
+    
+            <p>Ürünlerimiz, yalnızca kaliteden ödün vermeyenler için üretilmiştir. Her bir parça, sadece bir aksesuar değil, aynı zamanda bir miras bırakma amacı güder. Celestium Throne'da, sadece bir mücevher almakla kalmaz, aynı zamanda yıllar boyunca değerini koruyacak bir sanat eserine sahip olursunuz.</p>
+        </section>
+    
+        <footer>
+            <p>&copy; 2025 Celestium Throne - Tüm Hakları Saklıdır.</p>
+        </footer>
+    </section>
+    <section id="products">
+        <h2>Our Collection</h2>
+        <div class="categories">
+            <button class="category" onclick="filterCategory('all')">Tümü</button>
+            <button class="category" onclick="filterCategory('bracelets')">Bracelets</button>
+            <button class="category" onclick="filterCategory('rings')">Rings</button>
+            <button class="category" onclick="filterCategory('necklaces')">Necklaces</button>
+            <button class="category" onclick="filterCategory('vip')">VIP Designs</button>
+            
+        </div>
+        <div class="products" id="product-list">
+            <!-- Ürünler -->
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik1.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik1.jpg', 'Diamond Bracelet', '$13.000')">
+                <p>Gold Bracelet - $13000</p>
+                <button onclick="addToCart('Elmas bilezik', 130000, 'bileklikler/bileklik1.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik2.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik2.jpg', 'Diamond Bracelet', '$12.800')">
+                <p>Gold Bracelet - $12800</p>
+                <button onclick="addToCart('Elmas bilezik', 128000, 'bileklikler/bileklik2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik3.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik3.jpg', 'Diamond Bracelet', '$30.000')">
+                <p>Gold Bracelet - $30000</p>
+                <button onclick="addToCart('Elmas bilezik', 300000, 'bileklikler/bileklik3.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik4.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik4.jpg', 'Diamond Bracelet', '$14.000')">
+                <p>Gold Bracelet - $14000</p>
+                <button onclick="addToCart('Elmas bilezik', 140000, 'bileklikler/bileklik4.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik5.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik5.jpg', 'Diamond Bracelet', '$15.000')">
+                <p>Gold Bracelet - $15000</p>
+                <button onclick="addToCart('Elmas bilezik', 1499, 'bileklikler/bileklik5.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik6.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik6.jpg', 'Diamond Bracelet', '$21.000')">
+                <p>Gold Bracelet - $21000</p>
+                <button onclick="addToCart('Elmas bilezik',21000, 'bileklikler/bileklik6.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik7.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik7.jpg', 'Diamond Bracelet', '$16.800')">
+                <p>Gold Bracelet - $16800</p>
+                <button onclick="addToCart('Elmas bilezik', 160000, 'bileklikler/bileklik7.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik8.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik8.jpg', 'Diamond Bracelet', '$9000')">
+                <p>Gold Bracelet - $9000</p>
+                <button onclick="addToCart('Elmas bilezik',90000, 'bileklikler/bileklik8.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik9.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik9.jpg', 'Diamond Bracelet', '$17.000')">
+                <p>Gold Bracelet - $17000</p>
+                <button onclick="addToCart('Elmas bilezik',170000, 'bileklikler/bileklik9.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik10.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik10.jpg', 'Diamond Bracelet', '$18.000')">
+                <p>Gold Bracelet - $18000</p>
+                <button onclick="addToCart('Elmas bilezik', 18000, 'bileklikler/bileklik10.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik11.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik11.jpg', 'Diamond Bracelet', '$17.000')">
+                <p>Gold Bracelet - $17000</p>
+                <button onclick="addToCart('Elmas bilezik', 48000, 'bileklikler/bileklik11.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik12.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 38900, 'bileklikler/bileklik12.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler13.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 24900, 'bileklikler/bileklikler13.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklik14.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $99000</p>
+                <button onclick="addToCart('Elmas Bilezik', 99000, 'bileklikler/bileklik14.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler15.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 989000, 'bileklikler/bileklikler15.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler16.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 633000, 'bileklikler/bileklikler16.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler17.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 777000, 'bileklikler/bileklikler17.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler18.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 363000, 'bileklikler/bileklikler18.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler19.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 830000, 'bileklikler/bileklikler19.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler20.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 888000, 'bileklikler/bileklikler20.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler21.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 618000, 'bileklikler/bileklikler21.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler22.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 333000, 'bileklikler/bileklikler22.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler23.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 838000, 'bileklikler/bileklikler23.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="bracelets">
+                <img src="bileklikler/bileklikler24.jpg" alt="Diamond Bracelet" onclick="openModal('bileklikler/bileklik12.jpg', 'Diamond Bracelet', '$9800')">
+                <p>Gold Bracelet - $9800</p>
+                <button onclick="addToCart('Elmas Bilezik', 737000, 'bileklikler/bileklikler24.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+
+
+
+
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük1.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük1.jpg', 'Diamond Ring', '$100.200.000')">
+                <p>Diamond Ring - $100200000</p>
+                <button onclick="addToCart('Elmas yüzük', 123000000, 'yüzükler/yüzük1.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük2.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük2.jpg', 'Diamond Ring', '$79.000.000')">
+                <p>Diamond Ring - $97000000</p>
+                <button onclick="addToCart('Elmas yüzük', 97000000, 'yüzükler/yüzük2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük3.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük1.jpg', 'Diamond Ring', '$30.000.000')">
+                <p>Diamond Ring - $30000000</p>
+                <button onclick="addToCart('Elmas yüzük',30000000, 'yüzükler/yüzük3.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük4.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük4.jpg', 'Diamond Ring', '$83.000.000')">
+                <p>Diamond Ring - 83000000</p>
+                <button onclick="addToCart('Elmas yüzük', 83000000, 'yüzükler/yüzük4.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük5.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük5.jpg', 'Diamond Ring', '$43.000.000')">
+                <p>Diamond Ring - $43000000</p>
+                <button onclick="addToCart('Elmas yüzük', 67000000, 'yüzükler/yüzük5.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük6.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük6.jpg', 'Diamond Ring', '$40.600.000')">
+                <p>Diamond Ring - $40600000</p>
+                <button onclick="addToCart('Elmas yüzük',123000000, 'yüzükler/yüzük6.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük7.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$52.800.000')">
+                <p>Diamond Ring - $52800000</p>
+                <button onclick="addToCart('Elmas yüzük', 116000000, 'yüzükler/yüzük7.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük8.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$71.900.000')">
+                <p>Diamond Ring - $71900000</p>
+                <button onclick="addToCart('Elmas yüzük', 960000000, 'yüzükler/yüzük8.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük9.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$95.200.000')">
+                <p>Diamond Ring - $95200000</p>
+                <button onclick="addToCart('Elmas yüzük', 808000000, 'yüzükler/yüzük9.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük10.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$98.100.000')">
+                <p>Diamond Ring - $98100000</p>
+                <button onclick="addToCart('Elmas yüzük', 26000000, 'yüzükler/yüzük10.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük11.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$54.700.000')">
+                <p>Diamond Ring - $54700000</p>
+                <button onclick="addToCart('Elmas yüzük', 300000000, 'yüzükler/yüzük11.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük12.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$86.900.000')">
+                <p>Diamond Ring - $86900000</p>
+                <button onclick="addToCart('Elmas yüzük', 16000000, 'yüzükler/yüzük12.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük13.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$78.700.000')">
+                <p>Diamond Ring - $78700000</p>
+                <button onclick="addToCart('Elmas yüzük', 90000000, 'yüzükler/yüzük13.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük14.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $69500000</p>
+                <button onclick="addToCart('Elmas yüzük', 2000000000, 'yüzükler/yüzük14.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük15.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $29500000</p>
+                <button onclick="addToCart('Elmas yüzük', 98000000, 'yüzükler/yüzük15.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzük16.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 123300000, 'yüzükler/yüzük16.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler17.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 923300000, 'yüzükler/yüzükler17.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler18.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 243300000, 'yüzükler/yüzükler18.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler19.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 803300000, 'yüzükler/yüzükler19.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler20.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 823300000, 'yüzükler/yüzükler20.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler21.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 987600000, 'yüzükler/yüzükler21.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler22.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 765400000, 'yüzükler/yüzükler22.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler23.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 987600000, 'yüzükler/yüzükler23.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="rings">
+                <img src="yüzükler/yüzükler24.jpg" alt="Diamond Ring" onclick="openModal('yüzükler/yüzük7.jpg', 'Diamond Ring', '$69.500.000')">
+                <p>Diamond Ring - $18500000</p>
+                <button onclick="addToCart('Elmas yüzük', 798600000, 'yüzükler/yüzükler24.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            
+            
+            
+
+
+
+
+            
+
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye1.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye1.jpg', 'Diamond Necklace', '$350.000.000')">
+                <p>Diamond Necklace - $350000000</p>
+                <button onclick="addToCart('Elmas  kolye',350000000, 'kolyeler/kolye1.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye2.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye2.jpg', 'Diamond Necklace', '$720.000.000')">
+                <p>Diamond Necklace - $720000000</p>
+                <button onclick="addToCart('Elmas  kolye',720000000, 'kolyeler/kolye2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye3.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye3.jpg', 'Diamond Necklace', '$550.000.000')">
+                <p>Diamond Necklace - $550000000</p>
+                <button onclick="addToCart('Elmas  kolye', 550000000, 'kolyeler/kolye3.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye4.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye4.jpg', 'Diamond Necklace', '$420.000.000')">
+                <p>Diamond Necklace - $420000000</p>
+                <button onclick="addToCart('Elmas  kolye', 420000000, 'kolyeler/kolye4.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye5.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye3.jpg', 'Diamond Necklace', '$180.000.000')">
+                <p>Diamond Necklace - $180000000</p>
+                <button onclick="addToCart('Elmas  kolye',180000000, 'kolyeler/kolye5.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye6.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye6.jpg', 'Diamond Necklace', '$820.000.000')">
+                <p>Diamond Necklace - $820000000</p>
+                <button onclick="addToCart('Elmas  kolye', 820000000, 'kolyeler/kolye6.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye7.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye7.jpg', 'Diamond Necklace', '$350.000.000')">
+                <p>Diamond Necklace - $350000000</p>
+                <button onclick="addToCart('Elmas  kolye', 350000000, 'kolyeler/kolye7.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye8.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye7.jpg', 'Diamond Necklace', '$480.000.000')">
+                <p>Diamond Necklace - $480000000</p>
+                <button onclick="addToCart('Elmas  kolye', 480000000, 'kolyeler/kolye8.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye9.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye9.jpg', 'Diamond Necklace', '$650.000.000')">
+                <p>Diamond Necklace - $650000000</p>
+                <button onclick="addToCart('Elmas  kolye', 650000000, 'kolyeler/kolye9.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye10.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye10.jpg', 'Diamond Necklace', '$320.000.000')">
+                <p>Diamond Necklace - $320000000</p>
+                <button onclick="addToCart('Elmas  kolye', 320000000, 'kolyeler/kolye10.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye11.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye11.jpg', 'Diamond Necklace', '$250.000.000')">
+                <p>Diamond Necklace - $250000000</p>
+                <button onclick="addToCart('Elmas  kolye', 600000000, 'kolyeler/kolye11.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye12.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye12.jpg', 'Diamond Necklace', '$500.000.000')">
+                <p>Diamond Necklace - $500000000</p>
+                <button onclick="addToCart('Elmas  kolye', 500000000, 'kolyeler/kolye12.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye13.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye13.jpg', 'Diamond Necklace', '$480.000.000')">
+                <p>Diamond Necklace - $480000000</p>
+                <button onclick="addToCart('Elmas  kolye', 480000000, 'kolyeler/kolye13.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye14.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye14.jpg', 'Diamond Necklace', '$200.000.000')">
+                <p>Diamond Necklace - $200000000</p>
+                <button onclick="addToCart('Elmas  kolye', 200000000, 'kolyeler/kolye14.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye15.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $198000000</p>
+                <button onclick="addToCart('Elmas  kolye',198000000, 'kolyeler/kolye15.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye16.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $179000000</p>
+                <button onclick="addToCart('Elmas  kolye', 179000000, 'kolyeler/kolye16.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye17.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $109000000</p>
+                <button onclick="addToCart('Elmas  kolye',109000000, 'kolyeler/kolye17.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye18.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $379000000</p>
+                <button onclick="addToCart('Elmas  kolye', 379000000, 'kolyeler/kolye18.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye19.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $199000000</p>
+                <button onclick="addToCart('Elmas  kolye',199000000, 'kolyeler/kolye19.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye20.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $779000000</p>
+                <button onclick="addToCart('Elmas  kolye',779000000, 'kolyeler/kolye20.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye21.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $879000000</p>
+                <button onclick="addToCart('Elmas  kolye',879000000, 'kolyeler/kolye21.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye22.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $987000000</p>
+                <button onclick="addToCart('Elmas  kolye',987000000, 'kolyeler/kolye22.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye23.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $888400000</p>
+                <button onclick="addToCart('Elmas  kolye',888400000, 'kolyeler/kolye23.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="necklaces">
+                <img src="kolyeler/kolye24.jpg" alt="Diamond Necklace" onclick="openModal('kolyeler/kolye15.jpg', 'Diamond Necklace', '$198.000.000')">
+                <p>Diamond Necklace - $943000000</p>
+                <button onclick="addToCart('Elmas  kolye',943000000, 'kolyeler/kolye24.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            
+            
+
+
+
+
+            <div class="product" data-category="vip">
+                <img src="vıp/vip1.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip1.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $800000000</p>
+                <button onclick="addToCart('elmas maske',800000000, 'vıp/vip1.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip2.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip1.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $900000000</p>
+                <button onclick="addToCart('elmas taç', 900000000, 'vıp/vip2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip3.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip1.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $500000000</p>
+                <button onclick="addToCart('elmas işlemeli özel dikim elbise', 500000000, 'vıp/vip3.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vpp.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip1.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $200000000</p>
+                <button onclick="addToCart('gümüş maske seti',200000000, 'vıp/vpp.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip12.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip12.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $200000000</p>
+                <button onclick="addToCart('altıns maske', 800000000, 'vıp/vip12.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vıp99.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $900000000</p>
+                <button onclick="addToCart('altın maske',900000000, 'vıp/vıp99.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/ee.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $900000000</p>
+                <button onclick="addToCart('altın taç', 790000000, 'vıp/ee.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/bb.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800000000')">
+                <p>VIP Custom mask - $300000000</p>
+                <button onclick="addToCart('saf altın işlemeli erkek melek kanatlı kostüm özel tasarım',999000000, 'vıp/bb.jpgg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/maske2.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $200000000</p>
+                <button onclick="addToCart('saf altın işlemeli kadın elbise özel tasarım', 90000000, 'vıp/maske2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/222.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $500000000</p>
+                <button onclick="addToCart('siyah mücevher kaplı maske', 500000000, 'vıp/222.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+          
+            <div class="product" data-category="vip">
+                <img src="vıp/lalalla.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $700000000</p>
+                <button onclick="addToCart('siyah mücevher kaplı taç',700000000, 'vvıp/lalalla.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/2222.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $500000000</p>
+                <button onclick="addToCart('siyah metal kılıç', 500000000, 'vvıp/2222.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/k3.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $300000000</p>
+                <button onclick="addToCart('kırmızı mücevher kaplı çiçekli maske', 300000000, 'vvıp/k3.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/k2.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $300000000</p>
+                <button onclick="addToCart('kırmızı mücevher kaplı taç', 80000000, 'vvıp/k2.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/k1.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $300000000</p>
+                <button onclick="addToCart('saten kırmızı kadın elbise yüksek kalite kumas', 90000000, 'vvıp/k1.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/k4.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $200000000</p>
+                <button onclick="addToCart('erkek kırmızı kürklü takım', 2000000000, 'vvıp/k4.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip86.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $300000000</p>
+                <button onclick="addToCart('yakut süslemeli maske', 300000000, 'vıp/vip86.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip87.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $600000000</p>
+                <button onclick="addToCart('yakut süslemeli taç', 600000000, 'vıp/vip87.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip88.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $40000000</p>
+                <button onclick="addToCart('özel dikim yeşil elbise', 40000000, 'vıp/vip88.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+            <div class="product" data-category="vip">
+                <img src="vıp/vip89.jpg" alt="VIP Custom Necklace" onclick="openModal('vıp/vip99.jpg', 'VIP Custom Necklace', '$800.000.000')">
+                <p>VIP Custom mask - $30000000</p>
+                <button onclick="addToCart('erkek timsah derisi takım elbise', 30000000, 'vıp/vip89.jpg')">
+                    Sepete Ekle
+                  </button>
+            </div>
+
+        </div>
+
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: info@luxuryjewelry.com</p>
+    </section>
+    <div id="cartModal" class="modal">
+        <span class="close" onclick="closeCart()">&times;</span>
+        <h2>Alışveriş Sepeti</h2>
+        <ul id="cartItems"></ul>
+        <button onclick="checkout()">Ödeme Yap</button>
+    </div>
+
+</div>
+    <ul id="cart-items"></ul>
+
+
+</div>
+   
+    <script>
+        
+
+        
+      </script>
+
+
+
+</body>
+</html>
+
